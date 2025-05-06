@@ -1,40 +1,99 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Windows.Forms;
 
 namespace BrickBreaker
 {
     public class Ball
     {
-        public int x, y, xSpeed, ySpeed, size;
+
+        public float x, y, xSpeed = 6, ySpeed = 6, size;
+
         public Color colour;
 
         public static Random rand = new Random();
 
-        public Ball(int _x, int _y, int _xSpeed, int _ySpeed, int _ballSize)
+        public bool IsPaused = true;
+
+        Paddle pad;
+
+        public Ball(float _x, float _y, float _xSpeed, float _ySpeed, float _ballSize)
         {
             x = _x;
             y = _y;
+
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
+
             size = _ballSize;
 
         }
 
         public void Move()
         {
-            x = x + xSpeed;
-            y = y + ySpeed;
+
+            if (IsPaused == false)
+            {
+
+                x = x + xSpeed;
+
+                y = y - ySpeed;
+
+                if (y < 0)
+                {
+                    ySpeed = -ySpeed;
+
+                    y = 5;
+                }
+
+            }
+            else
+            {
+
+                if (pad != null)
+                {
+
+                    xSpeed = 0;
+
+                    ySpeed = 0;
+
+                    x = (pad.x + (pad.width / 2) - (size / 2));
+
+                    y = (pad.y - pad.height);
+
+                }
+
+            }
+
         }
 
         public bool BlockCollision(Block b)
         {
-            Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
-            Rectangle ballRec = new Rectangle(x, y, size, size);
+
+            RectangleF blockRec = new RectangleF(b.x, b.y, b.width, b.height);
+            RectangleF ballRec = new RectangleF(x, y, size, size);
 
             if (ballRec.IntersectsWith(blockRec))
             {
-                ySpeed *= -1;
+                float ySSwitch = ySpeed;
+
+                if (x <= b.x + b.width && x >= b.x - size)
+                {
+
+                    ySpeed = -ySpeed;
+
+                }
+
+                if (y <= b.y + b.height && y >= b.y - size)
+                {
+
+                    xSpeed = -xSpeed;
+
+                }
+
+                y -= 10;
+
             }
 
             return blockRec.IntersectsWith(ballRec);
@@ -42,31 +101,35 @@ namespace BrickBreaker
 
         public void PaddleCollision(Paddle p)
         {
-            Rectangle ballRec = new Rectangle(x, y, size, size);
-            Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
+            RectangleF ballRec = new RectangleF(x, y, size, size);
+            RectangleF paddleRec = new RectangleF(p.x, p.y, p.width, p.height);
 
-            if (ballRec.IntersectsWith(paddleRec))
+            pad = p;
+
+            if (ballRec.IntersectsWith(paddleRec) && y >= ballRec.Y)
             {
-                ySpeed *= -1;
+
+                xSpeed += p.move / 3;
+
+                ySpeed = -ySpeed;
+
+                y = p.y - ballRec.Height;
             }
         }
 
         public void WallCollision(UserControl UC)
         {
-            // Collision with left wall
-            if (x <= 0)
+            // Collision with left or right wall
+            if (x <= 0 || x >= (UC.Width - size))
             {
-                xSpeed *= -1;
+                xSpeed = -xSpeed;
             }
-            // Collision with right wall
-            if (x >= (UC.Width - size))
-            {
-                xSpeed *= -1;
-            }
+
             // Collision with top wall
-            if (y <= 2)
+            if (y <= 0)
             {
-                ySpeed *= -1;
+                ySpeed = -ySpeed;
+
             }
         }
 
@@ -76,6 +139,19 @@ namespace BrickBreaker
 
             if (y >= UC.Height)
             {
+
+                if (pad != null)
+                {
+
+                    x = (pad.x + (pad.width / 2) - (size / 2));
+
+                    y = (pad.y - pad.height);
+
+                    ySpeed = -6;
+                    xSpeed = 0;
+
+                }
+
                 didCollide = true;
             }
 
