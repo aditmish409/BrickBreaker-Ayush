@@ -15,16 +15,16 @@ namespace BrickBreaker
         public int x;
         public int y; 
         public int hp;
-        public Color colour;
+        public Color color;
 
         public static Random rand = new Random();
 
-        public Block(int _x, int _y, int _hp, Color _colour)
+        public Block(int _x, int _y, int _hp, Color _color)
         {
             x = _x;
             y = _y;
             hp = _hp;
-            colour = _colour;
+            color = _color;
         }
     }
 }
