@@ -25,5 +25,26 @@ namespace BrickBreaker
 
             ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
         }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+
+
+
+
+
+
+
+
+
+
+
+
+        }
     }
 }

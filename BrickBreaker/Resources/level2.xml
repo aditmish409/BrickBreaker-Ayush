@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<level>
+    <Block x="273" y="208" color="DarkBlue" hp="1" />
+	<Block x="326" y="208" color="DarkBlue" hp="1" />
+	<Block x="379" y="208" color="DarkBlue" hp="1" />
+	<Block x="273" y="231" color="DarkBlue" hp="1" />
+	<Block x="273" y="254" color="DarkBlue" hp="1" />
+	<Block x="273" y="277" color="DarkBlue" hp="1" />
+	<Block x="273" y="300" color="DarkBlue" hp="1" />
+	<Block x="326" y="323" color="DarkBlue" hp="1" />
+	<Block x="379" y="323" color="DarkBlue" hp="1" />
+	<Block x="432" y="323" color="DarkBlue" hp="1" />
+	<Block x="326" y="231" color="LightBlue" hp="4" />
+	<Block x="379" y="231" color="LightBlue" hp="4" />
+	<Block x="432" y="231" color="LightBlue" hp="4" />
+	<Block x="326" y="254" color="LightBlue" hp="4" />
+	<Block x="379" y="254" color="LightBlue" hp="4" />
+	<Block x="432" y="254" color="LightBlue" hp="4" />
+	<Block x="326" y="277" color="LightBlue" hp="4" />
+	<Block x="379" y="277" color="LightBlue" hp="4" />
+	<Block x="432" y="277" color="LightBlue" hp="4" />
+	<Block x="326" y="300" color="LightBlue" hp="4" />
+	<Block x="379" y="300" color="LightBlue" hp="4" />
+	<Block x="432" y="300" color="LightBlue" hp="4" />
+	<Block x="485" y="300" color="LightBlue" hp="4" />
+	<Block x="485" y="277" color="LightBlue" hp="4" />
+	<Block x="485" y="254" color="LightBlue" hp="4" />
+	<Block x="485" y="231" color="LightBlue" hp="4" />
+	<Block x="432" y="208" color="DarkBlue" hp="1" />
+	<Block x="485" y="208" color="DarkBlue" hp="1" />
+	<Block x="538" y="231" color="DarkBlue" hp="1" />
+	<Block x="538" y="254" color="DarkBlue" hp="1" />
+	<Block x="538" y="277" color="DarkBlue" hp="1" />
+</level>
