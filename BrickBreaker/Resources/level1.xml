@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<level>
+
+
+	<brick>
+
+		<x>470</x>
+		<y>99</y>
+		<hp>1</hp>
+		<colour>red</colour>
+</brick>
+	<brick>
+
+		<x>409</x>
+		<y>156</y>
+		<hp>1</hp>
+		<colour>red</colour>
+</brick>
+
+	<brick>
+
+		<x>336</x>
+		<y>261</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+<brick>
+		<x>269</x>
+		<y>325</y>
+		<hp>1</hp>
+		<colour>red</colour>
+</brick>
+<brick>
+		<x>313</x>
+		<y>171</y>
+		<hp>1</hp>
+		<colour>red</colour>
+</brick>
+<brick>
+	<x>398</x>
+	<y>445</y>
+	<hp>1</hp>
+	<colour>red</colour>
+</brick>
+
+	<brick>
+		<x>470</x>
+		<y>459</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+
+	<brick>
+		<x>542</x>
+		<y>445</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+
+	<brick>
+		<x>642</x>
+		<y>371</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+
+	<brick>
+		<x>683</x>
+		<y>325</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+
+	<brick>
+		<x>614</x>
+		<y>261</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+
+	<brick>
+		<x>542</x>
+		<y>156</y>
+		<hp>1</hp>
+		<colour>red</colour>
+	</brick>
+
+	<brick>
+		<x>470</x>
+		<y>184</y>
+		<hp>3</hp>
+		<colour>darkorange</colour>
+	</brick>
+
+	<brick>
+		<x>409</x>
+		<y>216</y>
+		<hp>3</hp>
+		<colour>darkorange</colour>
+	</brick>
+
+	<brick>
+		<x>542</x>
+		<y>216</y>
+		<hp>3</hp>
+		<colour>darkorange</colour>
+	</brick>
+
+	<brick>
+		<x>470</x>
+		<y>248</y>
+		<hp>3</hp>
+		<colour>darkrorange</colour>
+	</brick>
+
+	<brick>
+		<x>408</x>
+		<y>285</y>
+		<hp>3</hp>
+		<colour>darkorange</colour>
+	</brick>
+
+	<brick>
+		<x>542</x>
+		<y>291</y>
+		<hp>3</hp>
+		<colour>darkorange</colour>
+	</brick>
+
+	<brick>
+		<x>470</x>
+		<y>317</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+	<brick>
+		<x>385</x>
+		<y>349</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+	<brick>
+		<x>470</x>
+		<y>389</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+	<brick>
+		<x>557</x>
+		<y>349</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+	<brick>
+		<x>380</x>
+		<y>401</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+	<brick>
+		<x>470</x>
+		<y>401</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+	<brick>
+		<x>557</x>
+		<y>401q</y>
+		<hp>2</hp>
+		<colour>orange</colour>
+	</brick>
+
+
+
+
+
+
+</level>
