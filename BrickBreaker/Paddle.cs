@@ -1,13 +1,14 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace BrickBreaker
 {
     public class Paddle
     {
-        public int x, y, width, height, speed;
+        public float x, y, width, height, speed, move;
         public Color colour;
 
-        public Paddle(int _x, int _y, int _width, int _height, int _speed, Color _colour)
+        public Paddle(float _x, float _y, float _width, float _height, float _speed, Color _colour)
         {
             x = _x;
             y = _y;
@@ -17,16 +18,67 @@ namespace BrickBreaker
             colour = _colour;
         }
 
-        public void Move(string direction)
+        public void Move(string direction, UserControl UC)
         {
-            if (direction == "left")
+            if (x + width <= UC.Width && x >= 0)
             {
-                x -= speed;
+
+                switch (direction)
+                {
+                    case "left":
+
+                        if (move > 0)
+                        {
+                            move += -10 * speed;
+                        }
+                        else
+                        {
+                            move += -speed;
+                        }
+
+                        break;
+
+                    case "right":
+
+                        if (move < 0)
+                        {
+                            move += 10 * speed;
+                        }
+                        else
+                        {
+                            move += speed;
+                        }
+
+                        break;
+
+                    default:
+                        move = (float)(move / 1.2);
+                        break;
+                }
+
             }
-            if (direction == "right")
+            else
             {
-                x += speed;
+
+                if (x < 0)
+                {
+
+                    move = 0;
+
+                    x = 0;
+
+                }
+                else if (x > UC.Width - width)
+                {
+                    move = 0;
+
+                    x = UC.Width - width;
+                }
+
             }
+
+            x += move;
+
         }
     }
 }
