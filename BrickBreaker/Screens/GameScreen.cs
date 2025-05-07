@@ -26,6 +26,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
+        int level = 1;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -75,9 +76,9 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.
-
+            ExtractLevel(level);
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
-
+/*
             blocks.Clear();
             int x = 10;
 
@@ -86,9 +87,10 @@ namespace BrickBreaker
                 x += 57;
                 Block b1 = new Block(x, 10, 1, Color.White);
                 blocks.Add(b1);
-            }
+            }*/
 
             #endregion
+            
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -202,7 +204,6 @@ namespace BrickBreaker
             // Check for ball hitting bottom of screen
             if (ball.BottomCollision(this))
             {
-
                 lives--;
 
                 // Moves the ball back to origin
@@ -253,6 +254,34 @@ namespace BrickBreaker
             form.Controls.Remove(this);
         }
 
+        public void ExtractLevel(int level)
+        {
+            XmlReader reader = XmlReader.Create(Application.StartupPath + $"/Resources/level{level}.xml");
+            while (reader.Read())
+            {
+                while (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Text)
+                    {
+                        int x = Convert.ToInt16(reader.ReadString());
+
+                        reader.ReadToNextSibling("y");
+                        int y = Convert.ToInt16(reader.ReadString());
+
+                        reader.ReadToNextSibling("hp");
+                        int hp = Convert.ToInt16(reader.ReadString());
+
+                        reader.ReadToNextSibling("colour");
+                        string colorString = reader.ReadString();
+                        Color color = Color.FromName(colorString);
+
+                        Block b = new Block(x, y, hp, color);
+                        blocks.Add(b);
+                    }
+                }
+            }
+        }
+
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
@@ -262,7 +291,10 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                using (SolidBrush brush = new SolidBrush(b.color))
+                {
+                    e.Graphics.FillRectangle(brush, b.x, b.y, b.width, b.height);
+                }
             }
 
             // Draws ball

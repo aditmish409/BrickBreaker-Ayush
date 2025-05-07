@@ -34,17 +34,6 @@ namespace BrickBreaker
         private void button17_Click(object sender, EventArgs e)
         {
 
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
