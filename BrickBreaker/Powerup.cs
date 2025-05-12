@@ -14,7 +14,7 @@ namespace BrickBreaker
         public int x, y, xSpeed, ySpeed;
         public int size = 5;
 
-        List<Ball> balls = new List<Ball>();
+        List<Ball> pballs = new List<Ball>();
         List<Block> bricksList = new List<Block>();
 
         public Powerup(int _x, int _y, int _xSpeed, int _ySpeed)
