@@ -3,23 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
+using System.Drawing.Text;
+using System.Windows.Forms;
 
 namespace BrickBreaker
 {
     internal class Powerup
     {
-        public int x, y;
+        public int x, y, xSpeed, ySpeed;
         public int size = 5;
-        public int ySpeed;
-        //gameBall = new Ball(GameScreen.gameScreenWidth / 2, GameScreen.Height - 40, 10, -8);
 
         List<Ball> balls = new List<Ball>();
-        //List<Bricks> bricksList = new List<Bricks>();
+        List<Block> bricksList = new List<Block>();
 
         public Powerup(int _x, int _y, int _xSpeed, int _ySpeed)
         {
             x = _x;
             y = _y;
+            xSpeed = _xSpeed;
             ySpeed = _ySpeed;
         }
 
@@ -28,9 +30,38 @@ namespace BrickBreaker
             y += ySpeed;
         }
 
+        public bool BlockCollision(Block b)
+        {
+
+            RectangleF blockRec = new RectangleF(b.x, b.y, b.width, b.height);
+            RectangleF ballRec = new RectangleF(x, y, size, size);
+
+            if (ballRec.IntersectsWith(blockRec))
+            {
+
+                if (x <= b.x + b.width && x >= b.x - size)
+                {
+                    Rectangle powerRec = new Rectangle(b.x, b.y, b.width, b.height);
+
+                }
+
+                if (y <= b.y + b.height && y >= b.y - size)
+                {
+
+                    xSpeed = -xSpeed;
+
+                }
+
+            }
+
+            return blockRec.IntersectsWith(ballRec);
+        }
+
         private void firePU()
         {
-            //if (gameBall.IntersectsWit
+            
         }
+
+
     }
 }
