@@ -14,7 +14,7 @@ namespace BrickBreaker
         public int x, y, xSpeed, ySpeed;
         public int size = 5;
 
-        List<Ball> pballs = new List<Ball>();
+        List<Ball> balls = new List<Ball>();
         List<Block> bricksList = new List<Block>();
 
         public Powerup(int _x, int _y, int _xSpeed, int _ySpeed)
@@ -38,12 +38,10 @@ namespace BrickBreaker
 
             if (ballRec.IntersectsWith(blockRec))
             {
-                float ySSwitch = ySpeed;
 
                 if (x <= b.x + b.width && x >= b.x - size)
                 {
-
-                    ySpeed = -ySpeed;
+                    Rectangle powerRec = new Rectangle(b.x, b.y, b.width, b.height);
 
                 }
 
@@ -53,8 +51,6 @@ namespace BrickBreaker
                     xSpeed = -xSpeed;
 
                 }
-
-                y -= 10;
 
             }
 
