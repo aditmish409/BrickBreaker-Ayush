@@ -19,7 +19,7 @@ namespace BrickBreaker.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -83,37 +83,37 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;level&gt;
-        ///	&lt;!-- Bottom Layer (Red) --&gt;
+        ///	&lt;!-- White top half (7 blocks) --&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;375&lt;/x&gt;
-        ///		&lt;y&gt;400&lt;/y&gt;
+        ///		&lt;x&gt;350&lt;/x&gt;
+        ///		&lt;y&gt;175&lt;/y&gt;
         ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;Red&lt;/colour&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
         ///	&lt;/brick&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;425&lt;/x&gt;
-        ///		&lt;y&gt;400&lt;/y&gt;
+        ///		&lt;x&gt;450&lt;/x&gt;
+        ///		&lt;y&gt;175&lt;/y&gt;
         ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;Red&lt;/colour&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
         ///	&lt;/brick&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;475&lt;/x&gt;
-        ///		&lt;y&gt;400&lt;/y&gt;
+        ///		&lt;x&gt;550&lt;/x&gt;
+        ///		&lt;y&gt;175&lt;/y&gt;
         ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;Red&lt;/colour&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;300&lt;/x&gt;
+        ///		&lt;y&gt;200&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
         ///	&lt;/brick&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;525&lt;/x&gt;
-        ///		&lt;y&gt;400&lt;/y&gt;
+        ///		&lt;x&gt;400&lt;/x&gt;
+        ///		&lt;y&gt;200&lt;/y&gt;
         ///		&lt;hp&gt;1&lt;/hp&gt;
-        ///		&lt;colour&gt;Red&lt;/colour&gt;
-        ///	&lt;/brick&gt;
-        ///	&lt;!-- Middle Layer (Orange) --&gt;
-        ///	&lt;brick&gt;
-        ///		&lt;x&gt;425&lt;/x&gt;
-        ///		&lt;y&gt;375&lt;/y&gt;
-        ///		&lt;hp&gt;1&lt;/hp&gt;
-        /// [rest of string was truncated]&quot;;.
+        ///		&lt;colour&gt;White&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level1 {
             get {
@@ -122,21 +122,89 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;level&gt;
-        ///    &lt;Block x=&quot;273&quot; y=&quot;208&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;326&quot; y=&quot;208&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;379&quot; y=&quot;208&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;273&quot; y=&quot;231&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;273&quot; y=&quot;254&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;273&quot; y=&quot;277&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;273&quot; y=&quot;300&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;326&quot; y=&quot;323&quot; color=&quot;DarkBlue&quot; hp=&quot;1&quot; /&gt;
-        ///	&lt;Block x=&quot;379&quot; y=&quot;323&quot; color=&quot;DarkBlue&quot; hp [rest of string was truncated]&quot;;.
+        ///	&lt;!-- White top half (7 blocks) --&gt;
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;350&lt;/x&gt;
+        ///		&lt;y&gt;175&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;450&lt;/x&gt;
+        ///		&lt;y&gt;175&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;550&lt;/x&gt;
+        ///		&lt;y&gt;175&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;300&lt;/x&gt;
+        ///		&lt;y&gt;200&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;White&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;400&lt;/x&gt;
+        ///		&lt;y&gt;200&lt;/y&gt;
+        ///		&lt;hp&gt;1&lt;/hp&gt;
+        ///		&lt;colour&gt;White&lt; [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level2 {
             get {
                 return ResourceManager.GetString("level2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
+        ///&lt;level&gt;
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;427&lt;/x&gt;
+        ///		&lt;y&gt;130&lt;/y&gt;
+        ///		&lt;hp&gt;4&lt;/hp&gt;
+        ///		&lt;colour&gt;green&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;450&lt;/x&gt;
+        ///		&lt;y&gt;160&lt;/y&gt;
+        ///		&lt;hp&gt;4&lt;/hp&gt;
+        ///		&lt;colour&gt;green&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;470&lt;/x&gt;
+        ///		&lt;y&gt;180&lt;/y&gt;
+        ///		&lt;hp&gt;4&lt;/hp&gt;
+        ///		&lt;colour&gt;green&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;475&lt;/x&gt;
+        ///		&lt;y&gt;200&lt;/y&gt;
+        ///		&lt;hp&gt;4&lt;/hp&gt;
+        ///		&lt;colour&gt;green&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;460&lt;/x&gt;
+        ///		&lt;y&gt;230&lt;/y&gt;
+        ///		&lt;hp&gt;4&lt;/hp&gt;
+        ///		&lt;colour&gt;green&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///
+        ///	&lt;brick [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string level3 {
+            get {
+                return ResourceManager.GetString("level3", resourceCulture);
             }
         }
         

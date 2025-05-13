@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using System.Media;
 using System.Drawing.Text;
 using System.Xml;
+using BrickBreaker.Screens;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace BrickBreaker
 {
@@ -22,11 +24,12 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown, escDown;
 
         // Game values
         int lives;
-        int level = 1;
+        int level = 3;
+        public static int score;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -53,6 +56,7 @@ namespace BrickBreaker
         {
             //set life counter
             lives = 3;
+            score = 0;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -77,18 +81,6 @@ namespace BrickBreaker
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.
             ExtractLevel(level);
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-/*
-            blocks.Clear();
-            int x = 10;
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }*/
-
             #endregion
             
 
@@ -111,11 +103,11 @@ namespace BrickBreaker
 
                     if (ball.IsPaused)
                     {
-
                         CheckIfBallPaused();
-
                     }
-
+                    break;
+                case Keys.Escape:
+                    escDown = true;
                     break;
 
                 default:
@@ -153,13 +145,10 @@ namespace BrickBreaker
                 ball.ySpeed = 6;
 
                 return true;
-
             }
             else
             {
-
                 return false;
-
             }
         }
 
@@ -211,9 +200,8 @@ namespace BrickBreaker
 
                 if (lives == 0)
                 {
+                    Form1.ChangeScreen(this, new GameOverScreen());
                     gameTimer.Enabled = false;
-
-                    OnEnd();
                 }
             }
 
@@ -225,33 +213,40 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    blocks.Remove(b);
+                    score += 10;
+                    if (b.hp <= 0)
+                    {
+                        blocks.Remove(b); //Remove the brick 
+                        break;
+                    }
+                    
+                    
 
                     if (blocks.Count == 0)
                     {
                         gameTimer.Enabled = false;
-
-                        OnEnd();
+                        level++;
                     }
-
                     break;
                 }
+            }
+
+            //If the escape key is pressed then stop the game
+            if (escDown == true)
+            {
+                gameTimer.Stop();
+                Form1.ChangeScreen(this, new MenuScreen());
             }
 
             //redraw the screen
             Refresh();
         }
 
-        public void OnEnd()
+        private void nextLevelButton_Click(object sender, EventArgs e)
         {
-            // Goes to the game over screen
-            Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
-
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
-
-            form.Controls.Add(ps);
-            form.Controls.Remove(this);
+            blocks.Clear();
+            level++;
+            ExtractLevel(level);
         }
 
         public void ExtractLevel(int level)
@@ -284,6 +279,9 @@ namespace BrickBreaker
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            //Update the Score Label
+            scoreLabel.Text = $"{score}";
+
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);

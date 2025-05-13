@@ -7,7 +7,6 @@ namespace BrickBreaker
 {
     public class Ball
     {
-
         public float x, y, xSpeed = 6, ySpeed = 6, size;
 
         public Color colour;
@@ -50,10 +49,8 @@ namespace BrickBreaker
             }
             else
             {
-
                 if (pad != null)
                 {
-
                     xSpeed = 0;
 
                     ySpeed = 0;
@@ -61,11 +58,8 @@ namespace BrickBreaker
                     x = (pad.x + (pad.width / 2) - (size / 2));
 
                     y = (pad.y - pad.height);
-
                 }
-
             }
-
         }
 
         public bool BlockCollision(Block b)
