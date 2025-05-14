@@ -28,7 +28,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int level = 3;
+        int level = 1;
         public static int score;
 
         // Paddle and Ball objects
