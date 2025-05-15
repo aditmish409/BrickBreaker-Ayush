@@ -70,7 +70,6 @@ namespace BrickBreaker
 
             if (ballRec.IntersectsWith(blockRec))
             {
-                float ySSwitch = ySpeed;
 
                 if (x <= b.x + b.width && x >= b.x - size)
                 {
@@ -85,12 +84,10 @@ namespace BrickBreaker
                     xSpeed = -xSpeed;
 
                 }
-
-                y -= 10;
+                return true;
 
             }
-
-            return blockRec.IntersectsWith(ballRec);
+            return false;
         }
 
         public void PaddleCollision(Paddle p)

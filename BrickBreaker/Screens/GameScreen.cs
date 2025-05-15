@@ -28,7 +28,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int level = 1;
+        int level = 5;
         public static int score;
 
         // Paddle and Ball objects
@@ -214,6 +214,7 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     score += 10;
+                    b.hp--;
                     if (b.hp <= 0)
                     {
                         blocks.Remove(b); //Remove the brick 
