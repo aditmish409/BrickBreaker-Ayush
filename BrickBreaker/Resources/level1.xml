@@ -1,184 +1,126 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <level>
-
-
+	<!-- White top half (7 blocks) -->
 	<brick>
-
-		<x>470</x>
-		<y>99</y>
+		<x>350</x>
+		<y>175</y>
 		<hp>1</hp>
-		<colour>red</colour>
-</brick>
-	<brick>
-
-		<x>409</x>
-		<y>156</y>
-		<hp>1</hp>
-		<colour>red</colour>
-</brick>
-
-	<brick>
-
-		<x>336</x>
-		<y>261</y>
-		<hp>1</hp>
-		<colour>red</colour>
+		<colour>White</colour>
 	</brick>
-<brick>
-		<x>269</x>
+	<brick>
+		<x>450</x>
+		<y>175</y>
+		<hp>1</hp>
+		<colour>White</colour>
+	</brick>
+	<brick>
+		<x>550</x>
+		<y>175</y>
+		<hp>1</hp>
+		<colour>White</colour>
+	</brick>
+
+	<brick>
+		<x>300</x>
+		<y>200</y>
+		<hp>1</hp>
+		<colour>White</colour>
+	</brick>
+	<brick>
+		<x>400</x>
+		<y>200</y>
+		<hp>1</hp>
+		<colour>White</colour>
+	</brick>
+	<brick>
+		<x>500</x>
+		<y>200</y>
+		<hp>1</hp>
+		<colour>White</colour>
+	</brick>
+	<brick>
+		<x>600</x>
+		<y>200</y>
+		<hp>1</hp>
+		<colour>White</colour>
+	</brick>
+
+	<!-- Red bottom half (7 blocks) -->
+	<brick>
+		<x>300</x>
+		<y>300</y>
+		<hp>1</hp>
+		<colour>Red</colour>
+	</brick>
+	<brick>
+		<x>400</x>
+		<y>300</y>
+		<hp>1</hp>
+		<colour>Red</colour>
+	</brick>
+	<brick>
+		<x>500</x>
+		<y>300</y>
+		<hp>1</hp>
+		<colour>Red</colour>
+	</brick>
+	<brick>
+		<x>600</x>
+		<y>300</y>
+		<hp>1</hp>
+		<colour>Red</colour>
+	</brick>
+
+	<brick>
+		<x>350</x>
 		<y>325</y>
 		<hp>1</hp>
-		<colour>red</colour>
-</brick>
-<brick>
-		<x>313</x>
-		<y>171</y>
-		<hp>1</hp>
-		<colour>red</colour>
-</brick>
-<brick>
-	<x>398</x>
-	<y>445</y>
-	<hp>1</hp>
-	<colour>red</colour>
-</brick>
-
-	<brick>
-		<x>470</x>
-		<y>459</y>
-		<hp>1</hp>
-		<colour>red</colour>
+		<colour>Red</colour>
 	</brick>
-
 	<brick>
-		<x>542</x>
-		<y>445</y>
-		<hp>1</hp>
-		<colour>red</colour>
-	</brick>
-
-	<brick>
-		<x>642</x>
-		<y>371</y>
-		<hp>1</hp>
-		<colour>red</colour>
-	</brick>
-
-	<brick>
-		<x>683</x>
+		<x>450</x>
 		<y>325</y>
 		<hp>1</hp>
-		<colour>red</colour>
+		<colour>Red</colour>
 	</brick>
-
 	<brick>
-		<x>614</x>
-		<y>261</y>
+		<x>550</x>
+		<y>325</y>
 		<hp>1</hp>
-		<colour>red</colour>
+		<colour>Red</colour>
 	</brick>
 
+	<!-- Middle divider (Gray) (4 blocks) -->
 	<brick>
-		<x>542</x>
-		<y>156</y>
+		<x>350</x>
+		<y>250</y>
 		<hp>1</hp>
-		<colour>red</colour>
+		<colour>Gray</colour>
+	</brick>
+	<brick>
+		<x>450</x>
+		<y>250</y>
+		<hp>1</hp>
+		<colour>Gray</colour>
+	</brick>
+	<brick>
+		<x>550</x>
+		<y>250</y>
+		<hp>1</hp>
+		<colour>Gray</colour>
 	</brick>
 
+	<!-- Center button (2 blocks) -->
 	<brick>
-		<x>470</x>
-		<y>184</y>
-		<hp>3</hp>
-		<colour>darkorange</colour>
-	</brick>
-
-	<brick>
-		<x>409</x>
-		<y>216</y>
-		<hp>3</hp>
-		<colour>darkorange</colour>
-	</brick>
-
-	<brick>
-		<x>542</x>
-		<y>216</y>
-		<hp>3</hp>
-		<colour>darkorange</colour>
-	</brick>
-
-	<brick>
-		<x>470</x>
-		<y>248</y>
-		<hp>3</hp>
-		<colour>darkrorange</colour>
-	</brick>
-
-	<brick>
-		<x>408</x>
-		<y>285</y>
-		<hp>3</hp>
-		<colour>darkorange</colour>
-	</brick>
-
-	<brick>
-		<x>542</x>
-		<y>291</y>
-		<hp>3</hp>
-		<colour>darkorange</colour>
-	</brick>
-
-	<brick>
-		<x>470</x>
-		<y>317</y>
+		<x>450</x>
+		<y>250</y>
 		<hp>2</hp>
-		<colour>orange</colour>
+		<colour>White</colour>
 	</brick>
-
 	<brick>
-		<x>385</x>
-		<y>349</y>
+		<x>450</x>
+		<y>250</y>
 		<hp>2</hp>
-		<colour>orange</colour>
+		<colour>White</colour>
 	</brick>
-
-	<brick>
-		<x>470</x>
-		<y>389</y>
-		<hp>2</hp>
-		<colour>orange</colour>
-	</brick>
-
-	<brick>
-		<x>557</x>
-		<y>349</y>
-		<hp>2</hp>
-		<colour>orange</colour>
-	</brick>
-
-	<brick>
-		<x>380</x>
-		<y>401</y>
-		<hp>2</hp>
-		<colour>orange</colour>
-	</brick>
-
-	<brick>
-		<x>470</x>
-		<y>401</y>
-		<hp>2</hp>
-		<colour>orange</colour>
-	</brick>
-
-	<brick>
-		<x>557</x>
-		<y>401q</y>
-		<hp>2</hp>
-		<colour>orange</colour>
-	</brick>
-
-
-
-
-
-
 </level>

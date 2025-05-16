@@ -14,6 +14,8 @@ using System.Windows.Forms;
 using System.Media;
 using System.Drawing.Text;
 using System.Xml;
+using BrickBreaker.Screens;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace BrickBreaker
 {
@@ -22,10 +24,12 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown, escDown;
 
         // Game values
         int lives;
+        int level = 1;
+        public static int score;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -36,7 +40,11 @@ namespace BrickBreaker
         // List of destroyed blocks
         public static List<Block> destroyedBlocks = new List<Block>(); //list to hold destroyed blocks
 
+
         public static List<Block> surroundingBlocks = new List<Block>();
+
+        List<Rectangle> lifeHearts = new List<Rectangle>();
+
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
@@ -59,6 +67,21 @@ namespace BrickBreaker
         {
             //set life counter
             lives = 3;
+
+            lifeHearts.Clear();
+            int heartSize = 20;
+            int spacing = 5;
+            int startX = 10;
+            int startY = 10;
+
+            for (int i = 0; i < lives; i++)
+            {
+                int x = startX + i * (heartSize + spacing);
+                int y = startY;
+                lifeHearts.Add(new Rectangle(x, y, heartSize, heartSize));
+            }
+
+            score = 0;
 
             //set all button presses to false.
             leftArrowDown = rightArrowDown = false;
@@ -88,16 +111,20 @@ namespace BrickBreaker
             blocks.Clear();
             destroyedBlocks.Clear(); // Clear the destroyed blocks list
             fallingPowerUps.Clear();  // Clear any existing power-ups
-            int x = 10;
+            /*int x = 10;
 
             while (blocks.Count < 12)
             {
                 x += 57;
                 Block b1 = new Block(x, 10, 1, Color.White);
                 blocks.Add(b1);
-            }
+            }*/
+
+
+            ExtractLevel(level);
 
             #endregion
+            
 
             // start the game engine loop
             gameTimer.Enabled = true;
@@ -118,11 +145,11 @@ namespace BrickBreaker
 
                     if (ball.IsPaused)
                     {
-
                         CheckIfBallPaused();
-
                     }
-
+                    break;
+                case Keys.Escape:
+                    escDown = true;
                     break;
 
                 default:
@@ -160,13 +187,10 @@ namespace BrickBreaker
                 ball.ySpeed = 6;
 
                 return true;
-
             }
             else
             {
-
                 return false;
-
             }
         }
 
@@ -211,17 +235,19 @@ namespace BrickBreaker
             // Check for ball hitting bottom of screen
             if (ball.BottomCollision(this))
             {
-
                 lives--;
+                if (lifeHearts.Count > 0)
+                {
+                    lifeHearts.RemoveAt(lifeHearts.Count - 1);
+                }
 
                 // Moves the ball back to origin
                 ball.IsPaused = true;
 
                 if (lives == 0)
                 {
+                    Form1.ChangeScreen(this, new GameOverScreen());
                     gameTimer.Enabled = false;
-
-                    OnEnd();
                 }
             }
 
@@ -235,20 +261,27 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    blocks.Remove(b);
+                    score += 10;
+                    b.hp--;
+                    if (b.hp <= 0)
+                    {
+                        blocks.Remove(b); //Remove the brick 
+                        break;
+                    }
+                    
+                    
 
                     collidedBlocks.Add(b);
 
                     if (blocks.Count == 0)
                     {
                         gameTimer.Enabled = false;
-
-                        OnEnd();
+                        level++;
                     }
-
                     break;
                 }
             }
+
 
             foreach (Block b in collidedBlocks) //iterate through collided blocks
             {
@@ -287,24 +320,58 @@ namespace BrickBreaker
             //activate powerup
             //ball.ActivatePowerUp(blocks, destroyedBlocks);
 
+            //If the escape key is pressed then stop the game
+            if (escDown == true)
+            {
+                gameTimer.Stop();
+                Form1.ChangeScreen(this, new MenuScreen());
+            }
+
+
             //redraw the screen
             Refresh();
         }
 
-        public void OnEnd()
+        private void nextLevelButton_Click(object sender, EventArgs e)
         {
-            // Goes to the game over screen
-            Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
+            blocks.Clear();
+            level++;
+            ExtractLevel(level);
+        }
 
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+        public void ExtractLevel(int level)
+        {
+            XmlReader reader = XmlReader.Create(Application.StartupPath + $"/Resources/level{level}.xml");
+            while (reader.Read())
+            {
+                while (reader.Read())
+                {
+                    if (reader.NodeType == XmlNodeType.Text)
+                    {
+                        int x = Convert.ToInt16(reader.ReadString());
 
-            form.Controls.Add(ps);
-            form.Controls.Remove(this);
+                        reader.ReadToNextSibling("y");
+                        int y = Convert.ToInt16(reader.ReadString());
+
+                        reader.ReadToNextSibling("hp");
+                        int hp = Convert.ToInt16(reader.ReadString());
+
+                        reader.ReadToNextSibling("colour");
+                        string colorString = reader.ReadString();
+                        Color color = Color.FromName(colorString);
+
+                        Block b = new Block(x, y, hp, color);
+                        blocks.Add(b);
+                    }
+                }
+            }
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            //Update the Score Label
+            scoreLabel.Text = $"{score}";
+
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
@@ -312,11 +379,15 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                using (SolidBrush brush = new SolidBrush(b.color))
+                {
+                    e.Graphics.FillRectangle(brush, b.x, b.y, b.width, b.height);
+                }
             }
 
             // Draws ball
             e.Graphics.FillEllipse(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
 
             // Draw falling power-ups
             foreach (Powerup powerUp in fallingPowerUps)
@@ -327,6 +398,29 @@ namespace BrickBreaker
             {
                 activePowerUp.Draw(e);
             }
+
+                foreach (Rectangle rect in lifeHearts)
+                {
+                    int x = rect.X;
+                    int y = rect.Y;
+                    int size = rect.Width;
+
+                    // Draw left circle
+                    e.Graphics.FillEllipse(paddleBrush, x, y, size / 2, size / 2);
+
+                    // Draw right circle
+                    e.Graphics.FillEllipse(paddleBrush, x + size / 2, y, size / 2, size / 2);
+
+                    // Draw bottom triangle
+                    Point[] trianglePoints = new Point[]
+                    {
+                        new Point(x, y + size / 4),
+                        new Point(x + size, y + size / 4),
+                        new Point(x + size / 2, y + size)
+                    };
+
+                    e.Graphics.FillPolygon(paddleBrush, trianglePoints);
+                }
         }
     }
 }
