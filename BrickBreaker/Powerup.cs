@@ -11,57 +11,33 @@ namespace BrickBreaker
 {
     internal class Powerup
     {
-        public int x, y, xSpeed, ySpeed;
-        public int size = 5;
+        public float x, y, size;
+        public Color color;
+        public bool collected; // Flag to check if the power-up has been collected
 
-        List<Ball> balls = new List<Ball>();
-        List<Block> bricksList = new List<Block>();
-
-        public Powerup(int _x, int _y, int _xSpeed, int _ySpeed)
+        public Powerup(float _x, float _y, float _size, Color _color)
         {
             x = _x;
             y = _y;
-            xSpeed = _xSpeed;
-            ySpeed = _ySpeed;
+            size = _size;
+            color = _color;
+            collected = false;
+        }
+
+        public void Draw(PaintEventArgs e)
+        {
+            if (!collected) // Only draw if not collected
+            {
+                SolidBrush powerUpBrush = new SolidBrush(color);
+                e.Graphics.FillRectangle(powerUpBrush, x, y, size, size);
+                powerUpBrush.Dispose();
+            }
         }
 
         public void Move()
         {
-            y += ySpeed;
+            y += 2; // Make the power-up fall
         }
-
-        public bool BlockCollision(Block b)
-        {
-
-            RectangleF blockRec = new RectangleF(b.x, b.y, b.width, b.height);
-            RectangleF ballRec = new RectangleF(x, y, size, size);
-
-            if (ballRec.IntersectsWith(blockRec))
-            {
-
-                if (x <= b.x + b.width && x >= b.x - size)
-                {
-                    Rectangle powerRec = new Rectangle(b.x, b.y, b.width, b.height);
-
-                }
-
-                if (y <= b.y + b.height && y >= b.y - size)
-                {
-
-                    xSpeed = -xSpeed;
-
-                }
-
-            }
-
-            return blockRec.IntersectsWith(ballRec);
-        }
-
-        private void firePU()
-        {
-            
-        }
-
-
     }
+
 }

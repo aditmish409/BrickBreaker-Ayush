@@ -18,6 +18,10 @@ namespace BrickBreaker
 
         Paddle pad;
 
+        public bool hasPowerUp; // Flag to indicate if the ball has the power-up
+
+        //List<Block> blocks = new List<Block>();
+
         public Ball(float _x, float _y, float _xSpeed, float _ySpeed, float _ballSize)
         {
             x = _x;
@@ -28,6 +32,7 @@ namespace BrickBreaker
 
             size = _ballSize;
 
+            hasPowerUp = false;
         }
 
         public void Move()
@@ -70,6 +75,7 @@ namespace BrickBreaker
 
         public bool BlockCollision(Block b)
         {
+            if (b.isDestroyed) return false; //if block is already destroyed, no collision
 
             RectangleF blockRec = new RectangleF(b.x, b.y, b.width, b.height);
             RectangleF ballRec = new RectangleF(x, y, size, size);
@@ -158,5 +164,47 @@ namespace BrickBreaker
             return didCollide;
         }
 
+        //Method to handle power-up effect
+        //public void ActivatePowerUp(GameScreen.List<Block> blocks, GameScreen.List<Block> destroyedBlocks) //added destroyedBlocks
+        //{
+        //    if (hasPowerUp)
+        //    {
+        //        // Find the closest blocks to the current ball position.
+        //        GameScreen.List<Block> surroundingBlocks = FindSurroundingBlocks(blocks);
+
+        //        // Destroy the surrounding blocks.
+        //        foreach (Block block in surroundingBlocks)
+        //        {
+        //            if (!block.isDestroyed) //destroy only if not already destroyed
+        //            {
+        //                block.isDestroyed = true;
+        //                destroyedBlocks.Add(block); // Add to the destroyed list
+        //            }
+        //        }
+        //        hasPowerUp = false; // Reset power-up status after activation.
+        //    }
+        //}
+
+        //private List<Block> FindSurroundingBlocks(List<Block> blocks)
+        //{
+        //    List<Block> surrounding = new List<Block>();
+        //    // Define a small area around the ball.
+        //    float checkRadius = size * 3; // Check within a radius of ball size.
+
+        //    foreach (Block block in blocks)
+        //    {
+        //        if (!block.isDestroyed) // Only check blocks that are not destroyed
+        //        {
+        //            float distance = (float)Math.Sqrt(Math.Pow(block.x - x, 2) + Math.Pow(block.y - y, 2));
+        //            if (distance <= checkRadius)
+        //            {
+        //                surrounding.Add(block);
+        //            }
+        //        }
+        //    }
+        //    return surrounding;
+        //}
     }
+
 }
+

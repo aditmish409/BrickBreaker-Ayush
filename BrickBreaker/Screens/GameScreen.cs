@@ -32,12 +32,19 @@ namespace BrickBreaker
         Ball ball;
 
         // list of all blocks for current level
-        List<Block> blocks = new List<Block>();
+        public static List<Block> blocks = new List<Block>();
+        // List of destroyed blocks
+        public static List<Block> destroyedBlocks = new List<Block>(); //list to hold destroyed blocks
 
+        public static List<Block> surroundingBlocks = new List<Block>();
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+
+        // Power-up variables
+        Powerup activePowerUp = null; // The currently active power-up
+        List<Powerup> fallingPowerUps = new List<Powerup>(); // List of falling power-ups
 
         #endregion
 
@@ -79,6 +86,8 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
 
             blocks.Clear();
+            destroyedBlocks.Clear(); // Clear the destroyed blocks list
+            fallingPowerUps.Clear();  // Clear any existing power-ups
             int x = 10;
 
             while (blocks.Count < 12)
@@ -219,12 +228,16 @@ namespace BrickBreaker
             // Check for collision of ball with paddle, (incl. paddle movement)
             ball.PaddleCollision(paddle);
 
+            List<Block> collidedBlocks = new List<Block>(); //use a list to store collided blocks
+
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
                 if (ball.BlockCollision(b))
                 {
                     blocks.Remove(b);
+
+                    collidedBlocks.Add(b);
 
                     if (blocks.Count == 0)
                     {
@@ -236,6 +249,43 @@ namespace BrickBreaker
                     break;
                 }
             }
+
+            foreach (Block b in collidedBlocks) //iterate through collided blocks
+            {
+                blocks.Remove(b);
+                destroyedBlocks.Add(b); //add to destroyed list
+                Random rand = new Random();
+
+                // Create a power-up when a block is hit (20% chance)
+                if (rand.Next(100) < 20)
+                {
+                    Powerup powerUp = new Powerup(b.x, b.y, 15, Color.Yellow); //size 15, color yellow
+                    fallingPowerUps.Add(powerUp);
+                }
+            }
+
+            // Move and check for paddle collision with power-ups
+            for (int i = 0; i < fallingPowerUps.Count; i++)
+            {
+                fallingPowerUps[i].Move();
+                RectangleF powerUpRect = new RectangleF(fallingPowerUps[i].x, fallingPowerUps[i].y, fallingPowerUps[i].size, fallingPowerUps[i].size);
+                RectangleF paddleRect = new RectangleF(paddle.x, paddle.y, paddle.width, paddle.height);
+
+                if (powerUpRect.IntersectsWith(paddleRect))
+                {
+                    ball.hasPowerUp = true; //set powerup flag
+                    activePowerUp = fallingPowerUps[i]; // Store the collected power-up
+                    fallingPowerUps.RemoveAt(i);
+                    i--; // Adjust index after removal
+                }
+                else if (fallingPowerUps[i].y > this.Height) // Remove if it goes off-screen
+                {
+                    fallingPowerUps.RemoveAt(i);
+                    i--;
+                }
+            }
+            //activate powerup
+            //ball.ActivatePowerUp(blocks, destroyedBlocks);
 
             //redraw the screen
             Refresh();
@@ -267,6 +317,16 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillEllipse(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            // Draw falling power-ups
+            foreach (Powerup powerUp in fallingPowerUps)
+            {
+                powerUp.Draw(e);
+            }
+            if (activePowerUp != null)
+            {
+                activePowerUp.Draw(e);
+            }
         }
     }
 }
