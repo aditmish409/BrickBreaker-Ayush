@@ -12,6 +12,7 @@ namespace BrickBreaker
         public int width = 50;
         public int height = 25;
 
+        public bool isDestroyed; // Added to track block state
         public int x;
         public int y; 
         public int hp;
@@ -23,6 +24,7 @@ namespace BrickBreaker
 
         public Block(int _x, int _y, int _hp, Color _color)
         {
+            isDestroyed = false; //initial state
             x = _x;
             y = _y;
             hp = _hp;
