@@ -19,7 +19,7 @@ namespace BrickBreaker.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -63,6 +63,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Background {
+            get {
+                object obj = ResourceManager.GetObject("Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bulbasaur {
             get {
                 object obj = ResourceManager.GetObject("bulbasaur", resourceCulture);
@@ -76,6 +86,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap charmander {
             get {
                 object obj = ResourceManager.GetObject("charmander", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Gameback {
+            get {
+                object obj = ResourceManager.GetObject("Gameback", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -208,37 +228,38 @@ namespace BrickBreaker.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;level&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;5*50&lt;/x&gt;
-        ///		&lt;y&gt;1*25&lt;/y&gt;
+        ///		&lt;x&gt;250&lt;/x&gt;
+        ///		&lt;y&gt;25&lt;/y&gt;
         ///		&lt;hp&gt;5&lt;/hp&gt;
         ///		&lt;colour&gt;Black&lt;/colour&gt;
         ///	&lt;/brick&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;6*50&lt;/x&gt;
-        ///		&lt;y&gt;1*25&lt;/y&gt;
-        ///		&lt;hp&gt;5&lt;/hp&gt;
-        ///		&lt;colour&gt;Black&lt;/colour&gt;
-        ///	&lt;/brick&gt;
-        ///	
-        ///	&lt;brick&gt;
-        ///		&lt;x&gt;3*50&lt;/x&gt;
-        ///		&lt;y&gt;2*25&lt;/y&gt;
+        ///		&lt;x&gt;300&lt;/x&gt;
+        ///		&lt;y&gt;25&lt;/y&gt;
         ///		&lt;hp&gt;5&lt;/hp&gt;
         ///		&lt;colour&gt;Black&lt;/colour&gt;
         ///	&lt;/brick&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;4*50&lt;/x&gt;
-        ///		&lt;y&gt;2*25&lt;/y&gt;
+        ///		&lt;x&gt;150&lt;/x&gt;
+        ///		&lt;y&gt;50&lt;/y&gt;
         ///		&lt;hp&gt;5&lt;/hp&gt;
         ///		&lt;colour&gt;Black&lt;/colour&gt;
         ///	&lt;/brick&gt;
         ///	&lt;brick&gt;
-        ///		&lt;x&gt;5*50&lt;/x&gt;
-        ///		&lt;y&gt;2*25&lt;/y&gt;
+        ///		&lt;x&gt;200&lt;/x&gt;
+        ///		&lt;y&gt;50&lt;/y&gt;
+        ///		&lt;hp&gt;5&lt;/hp&gt;
+        ///		&lt;colour&gt;Black&lt;/colour&gt;
+        ///	&lt;/brick&gt;
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;250&lt;/x&gt;
+        ///		&lt;y&gt;50&lt;/y&gt;
         ///		&lt;hp&gt;5&lt;/hp&gt;
         ///		&lt;colour&gt;Red&lt;/colour&gt;
         ///	&lt;/brick&gt;
-        ///	&lt;bric [rest of string was truncated]&quot;;.
+        ///	&lt;brick&gt;
+        ///		&lt;x&gt;300&lt;/x&gt;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string level4 {
             get {
@@ -272,6 +293,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap squirtle {
             get {
                 object obj = ResourceManager.GetObject("squirtle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Start__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Start__1_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
