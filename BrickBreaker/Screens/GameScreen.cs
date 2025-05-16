@@ -28,7 +28,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
-        int level = 5;
+        int level = 1;
         public static int score;
 
         // Paddle and Ball objects
@@ -37,6 +37,8 @@ namespace BrickBreaker
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
+
+        List<Rectangle> lifeHearts = new List<Rectangle>();
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -56,6 +58,20 @@ namespace BrickBreaker
         {
             //set life counter
             lives = 3;
+
+            lifeHearts.Clear();
+            int heartSize = 20;
+            int spacing = 5;
+            int startX = 10;
+            int startY = 10;
+
+            for (int i = 0; i < lives; i++)
+            {
+                int x = startX + i * (heartSize + spacing);
+                int y = startY;
+                lifeHearts.Add(new Rectangle(x, y, heartSize, heartSize));
+            }
+
             score = 0;
 
             //set all button presses to false.
@@ -194,6 +210,10 @@ namespace BrickBreaker
             if (ball.BottomCollision(this))
             {
                 lives--;
+                if (lifeHearts.Count > 0)
+                {
+                    lifeHearts.RemoveAt(lifeHearts.Count - 1);
+                }
 
                 // Moves the ball back to origin
                 ball.IsPaused = true;
@@ -298,6 +318,33 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillEllipse(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            //using (SolidBrush redBrush = new SolidBrush(Color.Red))
+            //{
+                foreach (Rectangle rect in lifeHearts)
+                {
+                    int x = rect.X;
+                    int y = rect.Y;
+                    int size = rect.Width;
+
+                    // Draw left circle
+                    e.Graphics.FillEllipse(paddleBrush, x, y, size / 2, size / 2);
+
+                    // Draw right circle
+                    e.Graphics.FillEllipse(paddleBrush, x + size / 2, y, size / 2, size / 2);
+
+                    // Draw bottom triangle
+                    Point[] trianglePoints = new Point[]
+                    {
+                        new Point(x, y + size / 4),
+                        new Point(x + size, y + size / 4),
+                        new Point(x + size / 2, y + size)
+                    };
+
+                    e.Graphics.FillPolygon(paddleBrush, trianglePoints);
+                }
+           // }
+
         }
     }
 }
