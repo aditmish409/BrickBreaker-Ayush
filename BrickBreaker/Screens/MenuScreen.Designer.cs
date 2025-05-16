@@ -47,7 +47,7 @@
             this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.playButton.Font = new System.Drawing.Font("Palatino Linotype", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.playButton.ForeColor = System.Drawing.Color.Transparent;
-            this.playButton.Location = new System.Drawing.Point(336, 170);
+            this.playButton.Location = new System.Drawing.Point(229, 288);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(194, 88);
             this.playButton.TabIndex = 0;
@@ -61,7 +61,7 @@
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exitButton.Image = ((System.Drawing.Image)(resources.GetObject("exitButton.Image")));
-            this.exitButton.Location = new System.Drawing.Point(336, 264);
+            this.exitButton.Location = new System.Drawing.Point(484, 305);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(194, 52);
             this.exitButton.TabIndex = 1;
@@ -70,7 +70,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::BrickBreaker.Properties.Resources.Background;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Enabled = false;
             this.pictureBox1.Location = new System.Drawing.Point(-9, 0);
@@ -79,6 +79,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // MenuScreen
             // 
@@ -91,7 +92,7 @@
             this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.Name = "MenuScreen";
-            this.Size = new System.Drawing.Size(854, 542);
+            this.Size = new System.Drawing.Size(855, 401);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 

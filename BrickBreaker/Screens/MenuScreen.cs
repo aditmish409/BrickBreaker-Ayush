@@ -35,5 +35,9 @@ namespace BrickBreaker
             Form1.ChangeScreen(this, new GameScreen());
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
