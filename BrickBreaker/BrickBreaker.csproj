@@ -192,12 +192,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Start %281%29.png" />
+    <None Include="Resources\Start %281%29.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\level4.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Gameback.png" />
-    <None Include="Resources\Background.png" />
+    <None Include="Resources\Background.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Resources\level5.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
