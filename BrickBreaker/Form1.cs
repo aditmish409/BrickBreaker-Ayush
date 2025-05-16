@@ -15,7 +15,6 @@ namespace BrickBreaker
         public Form1()
         {
             InitializeComponent();
-            ChangeScreen(this, new MenuScreen());
         }
 
         public static void ChangeScreen(object sender, UserControl next)
@@ -46,6 +45,12 @@ namespace BrickBreaker
 
         private void button17_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            ChangeScreen(this, new MenuScreen());
 
         }
     }
