@@ -289,8 +289,8 @@ namespace BrickBreaker
                 destroyedBlocks.Add(b); //add to destroyed list
                 Random rand = new Random();
 
-                // Create a power-up when a block is hit (20% chance)
-                if (rand.Next(100) < 20)
+                // Create a power-up when a block is hit (80% chance)
+                if (rand.Next(100) < 80)
                 {
                     Powerup powerUp = new Powerup(b.x, b.y, 15, Color.Yellow); //size 15, color yellow
                     fallingPowerUps.Add(powerUp);
@@ -318,7 +318,13 @@ namespace BrickBreaker
                 }
             }
             //activate powerup
-            //ball.ActivatePowerUp(blocks, destroyedBlocks);
+            //activate powerup
+            if (activePowerUp != null)
+            {
+                
+                activePowerUp = null; //remove active powerup
+            }
+        
 
             //If the escape key is pressed then stop the game
             if (escDown == true)
@@ -326,8 +332,6 @@ namespace BrickBreaker
                 gameTimer.Stop();
                 Form1.ChangeScreen(this, new MenuScreen());
             }
-
-
             //redraw the screen
             Refresh();
         }
@@ -397,6 +401,7 @@ namespace BrickBreaker
             if (activePowerUp != null)
             {
                 activePowerUp.Draw(e);
+
             }
 
                 foreach (Rectangle rect in lifeHearts)

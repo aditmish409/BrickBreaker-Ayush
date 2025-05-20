@@ -1,7 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Text;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.Drawing.Text;
+using System.Xml;
+using BrickBreaker.Screens;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrackBar;
 
 namespace BrickBreaker
 {
@@ -19,7 +29,7 @@ namespace BrickBreaker
 
         public bool hasPowerUp; // Flag to indicate if the ball has the power-up
 
-        //List<Block> blocks = new List<Block>();
+        List<Block> blocks = new List<Block>();
 
         public Ball(float _x, float _y, float _xSpeed, float _ySpeed, float _ballSize)
         {
@@ -156,45 +166,45 @@ namespace BrickBreaker
         }
 
         //Method to handle power-up effect
-        //public void ActivatePowerUp(GameScreen.List<Block> blocks, GameScreen.List<Block> destroyedBlocks) //added destroyedBlocks
-        //{
-        //    if (hasPowerUp)
-        //    {
-        //        // Find the closest blocks to the current ball position.
-        //        GameScreen.List<Block> surroundingBlocks = FindSurroundingBlocks(blocks);
+        public void ActivatePowerUp(List<Block> blocks, List<Block> destroyedBlocks) //added destroyedBlocks
+        {
+            if (hasPowerUp)
+            {
+                // Find the closest blocks to the current ball position.
+                List<Block> surroundingBlocks = FindSurroundingBlocks(blocks);
 
-        //        // Destroy the surrounding blocks.
-        //        foreach (Block block in surroundingBlocks)
-        //        {
-        //            if (!block.isDestroyed) //destroy only if not already destroyed
-        //            {
-        //                block.isDestroyed = true;
-        //                destroyedBlocks.Add(block); // Add to the destroyed list
-        //            }
-        //        }
-        //        hasPowerUp = false; // Reset power-up status after activation.
-        //    }
-        //}
+                // Destroy the surrounding blocks.
+                foreach (Block block in surroundingBlocks)
+                {
+                    if (!block.isDestroyed) //destroy only if not already destroyed
+                    {
+                        block.isDestroyed = true;
+                        destroyedBlocks.Add(block); // Add to the destroyed list
+                    }
+                }
+                hasPowerUp = false; // Reset power-up status after activation.
+            }
+        }
 
-        //private List<Block> FindSurroundingBlocks(List<Block> blocks)
-        //{
-        //    List<Block> surrounding = new List<Block>();
-        //    // Define a small area around the ball.
-        //    float checkRadius = size * 3; // Check within a radius of ball size.
+        private List<Block> FindSurroundingBlocks(List<Block> blocks)
+        {
+            List<Block> surrounding = new List<Block>();
+            // Define a small area around the ball.
+            float checkRadius = size * 3; // Check within a radius of ball size.
 
-        //    foreach (Block block in blocks)
-        //    {
-        //        if (!block.isDestroyed) // Only check blocks that are not destroyed
-        //        {
-        //            float distance = (float)Math.Sqrt(Math.Pow(block.x - x, 2) + Math.Pow(block.y - y, 2));
-        //            if (distance <= checkRadius)
-        //            {
-        //                surrounding.Add(block);
-        //            }
-        //        }
-        //    }
-        //    return surrounding;
-        //}
+            foreach (Block block in blocks)
+            {
+                if (!block.isDestroyed) // Only check blocks that are not destroyed
+                {
+                    float distance = (float)Math.Sqrt(Math.Pow(block.x - x, 2) + Math.Pow(block.y - y, 2));
+                    if (distance <= checkRadius)
+                    {
+                        surrounding.Add(block);
+                    }
+                }
+            }
+            return surrounding;
+        }
     }
 
 }
