@@ -179,6 +179,7 @@ namespace BrickBreaker
                     if (!block.isDestroyed) //destroy only if not already destroyed
                     {
                         block.isDestroyed = true;
+                        block.hp = 0;
                         destroyedBlocks.Add(block); // Add to the destroyed list
                     }
                 }
@@ -190,7 +191,7 @@ namespace BrickBreaker
         {
             List<Block> surrounding = new List<Block>();
             // Define a small area around the ball.
-            float checkRadius = size * 3; // Check within a radius of ball size.
+            float checkRadius = size * 5; // Check within a radius of ball size.
 
             foreach (Block block in blocks)
             {

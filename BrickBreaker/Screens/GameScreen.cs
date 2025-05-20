@@ -257,7 +257,7 @@ namespace BrickBreaker
             List<Block> collidedBlocks = new List<Block>(); //use a list to store collided blocks
 
             // Check if ball has collided with any blocks
-            foreach (Block b in blocks)
+            foreach (Block b in blocks.ToList())
             {
                 if (ball.BlockCollision(b))
                 {
@@ -265,11 +265,32 @@ namespace BrickBreaker
                     b.hp--;
                     if (b.hp <= 0)
                     {
-                        blocks.Remove(b); //Remove the brick 
+                        b.isDestroyed = true; // Mark as destroyed
+                        collidedBlocks.Add(b); // Add to a list for removal later
+                    }
+
+                    // Check if ball has a power-up and activate it
+                    if (ball.hasPowerUp)
+                    {
+                        ball.ActivatePowerUp(blocks, destroyedBlocks); // Pass 'blocks' and 'destroyedBlocks' lists
+                    }
+                    else
+                    {
+                        // If no power-up, and the block is destroyed, add it to the destroyedBlocks list
+                        if (b.isDestroyed)
+                        {
+                            destroyedBlocks.Add(b);
+                        }
+                    }
+
+                    // Important: If a collision occurred, and it wasn't a power-up effect
+                    // or if the ball has a power-up, we might want to break after the first collision
+                    // or let the power-up handle multiple destructions.
+                    // For a single block destruction, breaking here is fine.
+                    if (!ball.hasPowerUp) // If it's a regular hit, we only hit one block
+                    {
                         break;
                     }
-                    
-                    
 
                     collidedBlocks.Add(b);
 
@@ -289,8 +310,8 @@ namespace BrickBreaker
                 destroyedBlocks.Add(b); //add to destroyed list
                 Random rand = new Random();
 
-                // Create a power-up when a block is hit (80% chance)
-                if (rand.Next(100) < 80)
+                // Create a power-up when a block is hit (60% chance)
+                if (rand.Next(100) < 40)
                 {
                     Powerup powerUp = new Powerup(b.x, b.y, 15, Color.Yellow); //size 15, color yellow
                     fallingPowerUps.Add(powerUp);
@@ -317,7 +338,7 @@ namespace BrickBreaker
                     i--;
                 }
             }
-            //activate powerup
+  
             //activate powerup
             if (activePowerUp != null)
             {
